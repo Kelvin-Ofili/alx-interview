@@ -1,28 +1,29 @@
 #!/usr/bin/python3
 
-""" Has a single character H with two operations: Copy All and Paste
-    Give number n, write a method that calculates operations to result
-    in exactly n H.
-    Prototype: def minOperations(n)
-    Return an integer
-    if n is impossible to achieve, return 0
-    """
+"""
+    Method that determines the number of minmum operations given n characters
+"""
 
 
 def minOperations(n):
     """
-    Single character H
-    Fewest number of operations
+        A function that calculates the fewest number of operations
+        needed to give a result of exactly n H characters in a file
+        args: n: Number of characters to be displayed
+        return:
+               number of min operations
     """
 
-    if n <= 1:
-        return 0
-    numbr, index, operations = n, 2, 0
-
-    while numbr > 1:
-        if numbr % index == 0:
-            numbr = numbr / index
-            operations = operations + index
+    now = 1
+    start = 0
+    counter = 0
+    while now < n:
+        remainder = n - now
+        if (remainder % now == 0):
+            start = now
+            now += start
+            counter += 2
         else:
-            index += 1
-    return operations
+            now += start
+            counter += 1
+    return counter
